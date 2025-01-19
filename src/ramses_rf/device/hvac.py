@@ -323,27 +323,32 @@ class HvacVentilator(FilterChange):  # FAN: RP/31DA, I/31D[9A]
         super()._setup_discovery_cmds()
 
         # RP --- 32:155617 18:005904 --:------ 22F1 003 000207
+        # self._add_discovery_cmd(
+        #     Command.from_attrs(RQ, self.id, Code._22F1, "00"), 60 * 60 * 24, delay=15
+        # )  # to learn scheme: orcon/itho/other (04/07/0?)
+
+        # for code in (
+        #    Code._2210,
+        #    Code._22E0,
+        #    Code._22E5,
+        #    Code._22E9,
+        #    Code._22F2,
+        #    Code._22F4,
+        #    Code._22F8,
+        #):
+        #    self._add_discovery_cmd(
+        #        Command.from_attrs(RQ, self.id, code, "00"), 60 * 30, delay=15
+        #    )
+
+        #for code in (Code._313E, Code._3222):
+        #    self._add_discovery_cmd(
+        #        Command.from_attrs(RQ, self.id, code, "00"), 60 * 30, delay=30
+        #    )
+
         self._add_discovery_cmd(
-            Command.from_attrs(RQ, self.id, Code._22F1, "00"), 60 * 60 * 24, delay=15
-        )  # to learn scheme: orcon/itho/other (04/07/0?)
+            Command.from_attrs(RQ, self.id, Code._31DA, "00"), 60 * 30, delay=60
+        )
 
-        for code in (
-            Code._2210,
-            Code._22E0,
-            Code._22E5,
-            Code._22E9,
-            Code._22F2,
-            Code._22F4,
-            Code._22F8,
-        ):
-            self._add_discovery_cmd(
-                Command.from_attrs(RQ, self.id, code, "00"), 60 * 30, delay=15
-            )
-
-        for code in (Code._313E, Code._3222):
-            self._add_discovery_cmd(
-                Command.from_attrs(RQ, self.id, code, "00"), 60 * 30, delay=30
-            )
 
     @property
     def air_quality(self) -> float | None:
