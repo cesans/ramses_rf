@@ -346,7 +346,7 @@ class HvacVentilator(FilterChange):  # FAN: RP/31DA, I/31D[9A]
         #    )
 
         self._add_discovery_cmd(
-            Command.from_attrs(RQ, self.id, Code._31DA, "00"), 60 * 30, delay=60
+            Command.from_attrs(RQ, self.id, Code._31DA, "00"), 30, delay=60
         )
 
 
