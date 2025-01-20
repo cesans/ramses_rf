@@ -419,8 +419,8 @@ class _MessageDB(_Entity):
 
 
 class _Discovery(_MessageDB):
-    MAX_CYCLE_SECS = 30
-    MIN_CYCLE_SECS = 3
+    MAX_CYCLE_SECS = 180
+    MIN_CYCLE_SECS = 30
 
     def __init__(self, gwy: Gateway) -> None:
         super().__init__(gwy)
